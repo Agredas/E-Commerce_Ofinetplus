@@ -59,6 +59,7 @@ class UserController extends Controller
 
             $respuesta=[];
             $respuesta['name']=$user->name;
+            $respuesta['surnames']=$user->surnames;
             $respuesta['token']= $token;
             $respuesta['role']= $user->role;
             return response()->json($respuesta,200);
