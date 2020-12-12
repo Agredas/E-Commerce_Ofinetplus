@@ -2,9 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class Products extends Migration
+class Orders extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +14,15 @@ class Products extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->decimal('price',8,2);
-            $table->string('image')->nullable();
-            $table->foreignId('category_id')->constrained('categories');
+            $table->string('status');
+            $table->dateTime('delivery_date')->addDays(3);
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
