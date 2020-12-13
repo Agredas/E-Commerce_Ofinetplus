@@ -72,6 +72,33 @@ class UserController extends Controller
         $token = $request->user()->token();
         $token ->revoke();
 
-        return response()->json('Logout done successfully.',200);
+        return response()->json('See you soon!',200);
+    }
+
+    public function getUserInfo(Request $request)
+    {
+        $user = Auth::user();
+        return $user;
+    }
+
+    public function show(int $id)
+	{
+		try {
+			$user = User::whereId($id);
+			return response()->json($user, 200);
+		} catch (\Exception $e) {
+			return response()->json($e, 400);
+		}
+    }
+    
+    public function destroyUser(User $user) 
+    {
+        $user = Auth::user();
+        try {
+            $user->delete();
+            return response() -> json('Account succesfully deleted.', 200);
+        } catch (\Throwable $th) {
+            return response()->json('There was an error trying to delete account.', 500);
+        }
     }
 }

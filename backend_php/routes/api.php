@@ -23,6 +23,13 @@ Route::post('user/register', [UserController::class,'store']);
 Route::post('user/login', [UserController::class,'login'])->name('login');
 
 Route::group(['middleware' => ['auth:api']], function () {    
-    Route::post('user/logout', [UserController::class,'logout']);
+    Route::get('user/logout', [UserController::class,'logout']);
+    Route::get('user/info', [UserController::class,'getUserInfo']);
+    Route::delete('/user/delete', [UserController::class, 'destroyUser']);
 });
 
+
+
+/* ADMIN
+Route::get('/user/{id}', [UserController::class, 'show']);
+ */
