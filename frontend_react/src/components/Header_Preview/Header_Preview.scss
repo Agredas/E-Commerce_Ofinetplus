@@ -1,0 +1,41 @@
+.header {
+  margin-top: 1.25em;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  .header_top {
+    display: flex;
+    width: 100%;
+    height: 5em;
+    .header_top_logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1.25em;
+    }
+    .header_top_navbar {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      .header_top_separator {
+        width: 100%;
+        border: none;
+        height: 0.125em;
+        margin-top: 0.125em;
+        background-color: black;
+      }
+      .header_top_navigation {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-right: 3.4375em;
+      }
+    }
+  }
+}
+
+
+
+
+
