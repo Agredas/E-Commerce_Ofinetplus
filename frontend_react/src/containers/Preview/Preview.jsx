@@ -14,8 +14,8 @@ function Preview () {
           <img src={LogoOfiplus} className="imgLogo"></img>
         </div>
         <div className="header_top_buttons">
-          <button className="reg-log-button">Register</button>
-          <button className="reg-log-button">Login</button>
+          <button className="reg-log-button">Registro</button>
+          <button className="reg-log-button">Acceso</button>
         </div>
       </div>
       <div className="header_middle">
@@ -30,7 +30,7 @@ function Preview () {
                   <div className="row">Ofrecemos los mejores productos con buena relación calidad-precio.</div>
                   <div className="row">Disponemos de servicio técnico para arreglar cualquier problema.</div>
                   <div className="row">Programación a medida para ayudarte a ti y a tu empresa.</div>
-                  <button className="contact_butt">Contact Us</button>
+                  <button className="contact_butt">Contáctanos</button>
               </div>
             </div>
         </div>
