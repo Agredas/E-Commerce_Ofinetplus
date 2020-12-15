@@ -3,7 +3,7 @@ import './Preview.scss';
 import LogoOfiplus from '../../img/LogoOfiplus.png'
 import blue_setup from '../../img/blue_setup.jpg'
 import prev_img_1 from '../../img/prev_img_1.jpg'
-import prev_img_2 from '../../img/prev_img_2.jpg'
+import Footer from '../../components/Footer/Footer'
 
 function Preview () {
 
@@ -23,7 +23,7 @@ function Preview () {
           <div className="middle_name">Ofinetplus</div>
             <div className="information">
               <div className="hole1"></div>
-              <div className="description1">
+              <div>
                 <img src={prev_img_1} className="prev_img_1"></img>              
               </div>
               <div className="description2">
@@ -37,8 +37,8 @@ function Preview () {
         <div className="header_middle_img">
           <img src={blue_setup} className="blue_setup"></img>
         </div>
-        
       </div>
+      <Footer/>
     </div>
   )
 }
