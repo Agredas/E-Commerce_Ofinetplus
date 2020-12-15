@@ -2,6 +2,8 @@ import React from 'react';
 import './Preview.scss';
 import LogoOfiplus from '../../img/LogoOfiplus.png'
 import blue_setup from '../../img/blue_setup.jpg'
+import prev_img_1 from '../../img/prev_img_1.jpg'
+import prev_img_2 from '../../img/prev_img_2.jpg'
 
 function Preview () {
 
@@ -20,12 +22,15 @@ function Preview () {
         <div className="header_middle_info">
           <div className="middle_name">Ofinetplus</div>
             <div className="information">
-              <div className="description1">Bienvenido al Chiquito Ipsum, el generador de texto de relleno para tus diseños de antes de los dolores.  Dale a "Fistrum" para que te salga ese pedaso de texto Chiquito en estado puro. Si te crees muy moderno dale a "Latin" que te lo pongo  con cuarto y mitad de romanooo...
+              <div className="hole1"></div>
+              <div className="description1">
+                <img src={prev_img_1} className="prev_img_1"></img>              
               </div>
               <div className="description2">
-                <div className="row">adsf</div>
-                <div className="row">asdf</div>
-                <div className="row">asdf</div>
+                  <div className="row">Ofrecemos los mejores productos con buena relación calidad-precio.</div>
+                  <div className="row">Disponemos de servicio técnico para arreglar cualquier problema.</div>
+                  <div className="row">Programación a medida para ayudarte a ti y a tu empresa.</div>
+                  <button className="contact_butt">Contact Us</button>
               </div>
             </div>
         </div>
