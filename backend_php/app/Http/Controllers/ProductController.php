@@ -39,7 +39,23 @@ class ProductController extends Controller
             $product->update(['image' => $imageName]);
             return response($product);
         } catch (\Exception $e) {
-            return response(['message' => 'There was a fail trying to upload the image.',], 400);
+            return response(['message' => 'There was a fail trying to upload the image.'], 400);
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $body = $request->validate([
+                'name' => 'string|max:40',
+                'description' => 'string|max:250',
+                'category_id' => 'integer'
+            ]);
+            $product = Product::find($id);
+            $product->update($body);
+            return response(['message' => 'Product sucessfully updated.','product' => $product]);
+        } catch (\Exception $e) {
+            return response(['message' => 'There was a problem trying to update the product.'], 500);
         }
     }
 
