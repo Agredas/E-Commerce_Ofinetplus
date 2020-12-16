@@ -75,20 +75,10 @@ class UserController extends Controller
         return response()->json('See you soon!',200);
     }
 
-    public function getUserInfo(Request $request)
+    public function getInfo(Request $request)
     {
         $user = Auth::user();
         return $user;
-    }
-
-    public function show(int $id)
-	{
-		try {
-			$user = User::whereId($id);
-			return response()->json($user, 200);
-		} catch (\Exception $e) {
-			return response()->json($e, 400);
-		}
     }
     
     public function destroyUser(User $user) 
