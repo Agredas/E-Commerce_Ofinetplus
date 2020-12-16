@@ -12,7 +12,7 @@ function Footer() {
           </div>
           <div className="footerContent">
             <span>
-              A project made by:{" "}
+              Un proyecto realizado por:{" "}
               <img src={linkedin} className="linkedin"></img>    
               <a target="_blank" href="https://www.linkedin.com/in/agredas/">
                 {" "}
