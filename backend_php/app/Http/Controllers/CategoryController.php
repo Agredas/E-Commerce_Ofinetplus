@@ -6,6 +6,7 @@ use App\Models\Category;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -28,12 +29,11 @@ class CategoryController extends Controller
     }
 
     public function indexAll(){
-        $categories = Category::with('products')->get();
-        return response($categories);
+        return Category::all();
     }
 
     public function getByName($name){              
-        $category = Category::with('products')->find($name);                             
-        return $category;
+        $filter = DB::table('categories')->select('*')->where('name', '=', $name)->get();
+        return $filter;
     }
 }

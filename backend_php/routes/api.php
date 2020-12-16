@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::delete('/user/delete', [UserController::class, 'destroyUser']);
 
     Route::get('/category/showAll', [CategoryController::class, 'indexAll']);
-    Route::get('/category/name/{name}', [CategoryController::class, 'getByName']);
+    Route::get('/category/{name}', [CategoryController::class, 'getByName']);
 
     Route::group(['middleware' => ['role:admin']], function () {
 
