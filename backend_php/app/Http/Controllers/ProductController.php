@@ -39,8 +39,10 @@ class ProductController extends Controller
     {
         try {
             $body = $request->validate([
-                'name' => 'string|max:40',
-                'description' => 'string|max:250',
+                'name' => 'string',
+                'price'=>'decimal',
+                'description' => 'string',
+                'image'=>'string',
                 'category_id' => 'integer'
             ]);
             $product = Product::find($id);
