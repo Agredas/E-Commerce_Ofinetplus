@@ -16,7 +16,7 @@ class ProductController extends Controller
                 'name' => 'required|string',
                 'price' => 'required',
                 'description' => 'required|string',
-                'img' => 'required|image',
+                'image' => 'required|image',
                 'category_id'=>'required'
             ]);
             $imageName = time() . '-' . request()->img->getClientOriginalName();

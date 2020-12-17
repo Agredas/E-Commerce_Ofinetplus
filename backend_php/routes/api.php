@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +32,18 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('/category/showAll', [CategoryController::class, 'indexAll']);
     Route::get('/category/{name}', [CategoryController::class, 'getByName']);
 
+    Route::get('/product/showAll', [ProductController::class, 'indexAll']);
+    Route::get('/product/{id}', [ProductController::class, 'getById']);
+    Route::get('/product/{name}', [ProductController::class, 'getByName']);
+    
+
     Route::group(['middleware' => ['role:admin']], function () {
 
         Route::post('/category/add', [CategoryController::class, 'store']);
+
+        Route::post('/product/add', [ProductController::class, 'store']);
+        Route::post('/product/image/{id}', [ProductController::class, 'uploadImage']);
+        Route::put('/product/{id}', [ProductController::class, 'update']);
+        Route::delete('/product/{id}', [ProductController::class, 'destroy']);
     });
 });
