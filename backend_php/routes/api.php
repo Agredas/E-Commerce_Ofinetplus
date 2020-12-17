@@ -42,7 +42,6 @@ Route::group(['middleware' => ['auth:api']], function () {
         Route::post('/category/add', [CategoryController::class, 'store']);
 
         Route::post('/product/add', [ProductController::class, 'store']);
-        Route::post('/product/image/{id}', [ProductController::class, 'uploadImage']);
         Route::put('/product/{id}', [ProductController::class, 'update']);
         Route::delete('/product/{id}', [ProductController::class, 'destroy']);
     });

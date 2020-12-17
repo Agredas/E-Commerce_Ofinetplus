@@ -1,46 +1,38 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Product;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
     public function store(Request $request)
     {
-        try {
-            $body = $request->validate([
-                'name' => 'required|string',
-                'price' => 'required',
-                'description' => 'required|string',
-                'image' => 'required|image',
-                'category_id'=>'required'
-            ]);
-            $imageName = time() . '-' . request()->img->getClientOriginalName();
-            request()->img->move('images/products', $imageName);
-            $body['image'] = $imageName;
-            $product = Product::create($body);
-        } catch (\Exception $e) {
-            return response($e,400);
-        }
-        return response($product);
-    }
-
-    public function uploadImage(Request $request, $id)
-    {
-        try {
-            $request->validate(['img' => 'required|image']);
-            $product = Product::find($id);
-            $imageName = time() . '-' . request()->img->getClientOriginalName();
-            request()->img->move('images/products', $imageName);
-            $product->update(['image' => $imageName]);
-            return response($product);
-        } catch (\Exception $e) {
-            return response(['message' => 'There was a fail trying to upload the image.'], 400);
-        }
+        $input=$request->all();
+            $rules=[
+                'name'=>'required',
+                'price'=>'required',
+                'description'=>'required',
+                'image'=>'required',
+                'category_id'=>'required',
+            ];
+            $messages=[
+                'name.required'=>'The name field is empty.',
+                'price.required'=>'The price field is empty.',
+                'description.required'=>'The description field is empty.',
+                'image.required'=>'The image field is empty.',
+                'category_id.required'=>'The category_id field is empty.',
+            ];
+            $validator = Validator::make($input, $rules,$messages);
+            if ($validator->fails()) {
+                return response()->json($validator->errors(), 400);
+            }else{
+                $product = Product::create($input);
+                return response($product);
+            }
     }
 
     public function update(Request $request, $id)
