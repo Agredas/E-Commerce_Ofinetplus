@@ -38,13 +38,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $body = $request->validate([
-                'name' => 'string',
-                'price'=>'decimal',
-                'description' => 'string',
-                'image'=>'string',
-                'category_id' => 'integer'
-            ]);
+            $body = $request->all();
             $product = Product::find($id);
             $product->update($body);
             return response(['message' => 'Product sucessfully updated.','product' => $product]);
