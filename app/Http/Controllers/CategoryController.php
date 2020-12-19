@@ -33,7 +33,7 @@ class CategoryController extends Controller
     }
 
     public function getByName($name){              
-        $filter = DB::table('categories')->select('*')->where('name', '=', $name)->get();
+        $filter = DB::table('categories')->select('*')->where('name', 'like', '%'.$name.'%')->get();
         return $filter;
     }
 }
