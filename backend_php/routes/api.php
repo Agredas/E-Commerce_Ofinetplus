@@ -34,7 +34,8 @@ Route::group(['middleware' => ['auth:api']], function () {
 
     Route::get('/product/showAll', [ProductController::class, 'indexAll']);
     Route::get('/product/{id}', [ProductController::class, 'getById']);
-    Route::get('/product/{name}', [ProductController::class, 'getByName']);
+    Route::get('/product/name/{name}', [ProductController::class, 'getByName']);
+    Route::get('/product/category/{id}', [ProductController::class, 'getProductByCategory']);
     
 
     Route::group(['middleware' => ['role:admin']], function () {
