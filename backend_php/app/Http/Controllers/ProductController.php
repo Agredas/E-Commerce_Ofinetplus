@@ -72,9 +72,19 @@ class ProductController extends Controller
         return response($product);
     }
 
-    public function getByName($name)
+    public function getByName(string $name)
     {
-        $product = Product::with('category')->find($name);
-        return response($product);
+        $filter = DB::table('products')->select('*')->where('name', 'like', '%'.$name.'%')->get();
+        return $filter;
+    }
+
+    public function getProductByCategory(int $id)
+    {
+        try {
+            $categories = Product::with(['category'])->where('category_id', '=', $id)->get();
+            return response()->json($categories, 200);
+        } catch (\Exception $e) {
+            return response()->json($e, 400);
+        }
     }
 }
