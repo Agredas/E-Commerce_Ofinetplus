@@ -37,7 +37,6 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('/product/name/{name}', [ProductController::class, 'getByName']);
     Route::get('/product/category/{id}', [ProductController::class, 'getProductByCategory']);
     
-
     Route::group(['middleware' => ['role:admin']], function () {
 
         Route::post('/category/add', [CategoryController::class, 'store']);
